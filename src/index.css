@@ -1,8 +1,30 @@
-body {
+@font-face {
+  font-family: "Montserrat";
+  src: url("./fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./fonts/Montserrat-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+body, button, input, textarea {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Montserrat";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +32,349 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root {
+  --white: #FFFFFF;
+  --gray: #F2F2F2;
+  --black: #000000;
+  --border: #00000010;
+}
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  background-color: var(--white);
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+header > div {
+  display: flex;
+  align-items: center;
+}
+
+.logo-box a {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  color: black;
+}
+
+.logo-box a h1 {
+  padding-bottom: 6px;
+  font-weight: 700;
+}
+
+.logo-box a:hover {
+  color: gray;
+}
+
+.auth-box {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-box a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  height: 100%;
+}
+
+.auth-box a:hover {
+  color: gray;
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+.auth-box a button {
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid var(--black);
+}
+
+.sign-up-button {
+  background-color: black;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
+
+.login-button {
+  background-color: var(--white);
+  border-radius: 5px;
+}
+
+.logout-button {
+  background-color: var(--white);
+  border-radius: 5px;
+}
+
+.homeMain {
+  display: flex;
+  flex-direction: column;
+  background-color: yellowgreen;
+}
+
+.posts-box, .heroScreen {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 24px;
+}
+
+.heroScreen {
+  background-color: var(--gray);
+  width: calc(100%-48px);
+  padding: 128px 24px;
+}
+
+.posts-box {
+  background-color: var(--white);
+  padding: 32px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.posts-title {
+  margin: 8px 0;
+}
+
+.post-hr, .comment-hr {
+  height: 0;
+  border-top: 1px solid #eee;
+  width: calc(100% - 2px);
+}
+
+.postCard {
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
+}
+
+.postCard a {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.author-avatar-card {
+  height: 24px;
+  width: 24px;
+  border-radius: 100px;
+}
+
+.blogMain {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 8px 24px;
+}
+
+.postFull {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
+  padding: 10px;
+  gap: 10px;
+}
+
+.postFull .info-box, .postCard .info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author-avatar-full {
+  height: 48px;
+  width: 48px;
+  border-radius: 100px;
+}
+
+.commentSection {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
+}
+
+.commentSection h2 {
+  padding: 8px 10px;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+}
+
+.author-avatar-comment {
+  height: 32px;
+  width: 32px;
+  border-radius: 100px;
+}
+
+.comment .info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commentCreator {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.comment-creator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment-creator-form textarea {
+  height: 80px;
+  border-radius: 5px;
+  resize: none;
+}
+
+.comment-creator-form button {
+  font-weight: 500;
+  padding: 5px 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+  width: fit-content;
+}
+
+.new-comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-comment a {
+  text-decoration: none;
+  padding: 10px;
+  color: black;
+}
+
+.signUpSuccess-box {
+  background-color: gray;
+  border-radius: 5px;
+  margin: 0 24px;
+}
+
+.signUpSuccess-box p {
+  padding: 48px 24px;
+}
+
+.text-input {
+  height: 48px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px solid black;
+  font-size: 16px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.login-form button, .signup-form button {
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 4px 16px;
+  height: 48px;
+  border: 1px solid black;
+  font-size: 16px;
+}
+
+.login-box, .signup-box {
+  background-color: var(--white);
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 0 24px;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
+}
+
+.title-box {
+  padding: 24px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: black;
+}
+
+.title-box {
+  color: white;
+}
+
+.login-box form, .signup-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+.name-box {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.name-box input {
+  width: 100%;
+}
+
+.error-box {
+  background-color: #cf000f;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.success-box {
+  background-color: #009944;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: var(--white);
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
 }
