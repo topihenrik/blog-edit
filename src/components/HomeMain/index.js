@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import PostCard from "./PostCard";
+import addIcon from "../../icons/add.png"
 
 export default function HomeMain(props) {
     const { user } = props;
@@ -48,8 +49,9 @@ export default function HomeMain(props) {
             <main>
                 <div className="posts-box">
                     <div className="post-create-box">
-                        <a>
-                            <button>Create a new post</button>
+                        <a href="/post">
+                            
+                            <button id="newPostBtn"><img id="add-icon" src={addIcon}/>Create a new post</button>
                         </a> 
                     </div>
                     {posts.map((post) => {
