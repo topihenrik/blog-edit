@@ -24,3 +24,4 @@ yarn-error.log*
 
 # other
 /public/tinymce/
+node_modules
