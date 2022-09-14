@@ -1,11 +1,10 @@
 import React, {useEffect, useRef, useState} from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { useNavigate } from 'react-router-dom';
-
 import uploadIcon from "../../icons/file_upload.png";
 
 
-export default function EditorMain(props) {
+export default function CreatePost(props) {
     const { user } = props;
     const editorRef = useRef(null);
     const navigate = useNavigate();

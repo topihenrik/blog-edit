@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import PostCard from "./PostCard";
-import addIcon from "../../icons/add.png"
+import addIcon from "../../icons/add.png";
 
-export default function HomeMain(props) {
+export default function Home(props) {
     const { user } = props;
     const navigate = useNavigate();
 

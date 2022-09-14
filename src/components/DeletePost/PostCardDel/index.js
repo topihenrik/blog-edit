@@ -2,8 +2,8 @@ import React from "react";
 import { DateTime } from "luxon";
 
 
-export default function PostCard(props) {
-    const {post} = props;
+export default function PostCardDel(props) {
+    const {post, count} = props;
     return(
         <div className="postCard">
             <a>
@@ -17,6 +17,8 @@ export default function PostCard(props) {
                 </div>
                 <h2>{post.title}</h2>
                 <p>{post.description.split(' ').slice(0, 30).join(' ') + "..."}</p>
+                <hr/>
+                <p>{count + " comments"}</p>
             </a>
         </div>
     )

@@ -542,3 +542,8 @@ footer {
   filter: invert(98%) sepia(4%) saturate(172%) hue-rotate(193deg) brightness(115%) contrast(100%);
   width: 36px;
 }
+
+.post-card-buttons {
+  display: flex;
+  gap: 10px;
+}

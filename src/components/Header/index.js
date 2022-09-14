@@ -13,7 +13,7 @@ export default function Header(props) {
     return(
         <header>
             <div className="logo-box">
-                <a href="/"><h1>{"<Blog/>"}</h1></a>
+                <a href="/"><h1>{"<Edit/>"}</h1></a>
             </div>
             {user?
             <div className="auth-box">
