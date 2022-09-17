@@ -46,11 +46,10 @@ export default function Home(props) {
         return <div>Loading...</div>
     } else {
         return(
-            <main>
+            <main className="homeMain">
                 <div className="posts-box">
                     <div className="post-create-box">
                         <a href="/post">
-                            
                             <button id="newPostBtn"><img id="add-icon" src={addIcon}/>Create a new post</button>
                         </a> 
                     </div>

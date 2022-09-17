@@ -25,7 +25,13 @@ export default function UpdatePost(props) {
             navigate("../login", {replace: true});
         }
 
-        fetch(`http://localhost:3000/posts/${postid}`)
+        const bearer = "Bearer " + localStorage.getItem("token");
+        fetch(`http://localhost:3000/auth/posts/${postid}/edit`,
+            {
+                headers: {
+                    "Authorization": bearer
+                }
+            })
             .then((res) => res.json())
             .then((result) => {
                 setIsLoaded1(true);
@@ -97,7 +103,7 @@ export default function UpdatePost(props) {
                         <form className="editor-form" onSubmit={handleSubmit}>
                             <div className="editor-title-box">
                                 <label><h3>Title:</h3></label>
-                                <input className="title-input" name="title" value={post.title}/>
+                                <input className="title-input" name="title" defaultValue={post.title}/>
                             </div>
                             <Editor
                                 tinymceScriptSrc={process.env.PUBLIC_URL + "/tinymce/tinymce.min.js"}

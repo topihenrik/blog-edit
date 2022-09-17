@@ -81,10 +81,12 @@ export default function DeletePost(props) {
                 <div className="delete-post-box">
                     <h2>Are you sure you want to delete this post?</h2>
                     <PostCardDel post={post} count={count}/>
-                    <form onSubmit={handleSubmit}>
-                        <label>To delete the post, type the title to confirm</label>
-                        <input name="confirmation" type="text"/>
-                        <button>Delete</button>
+                    <form className="delete-form" onSubmit={handleSubmit}>
+                        <label className="delete-label" htmlFor="confirmation">To delete the post, type the title to confirm</label>
+                        <div className="delete-form-div">
+                            <input className="delete-input" name="confirmation" id="confirmation" type="text"/>
+                            <button className="delete-button">Delete</button>
+                        </div>
                     </form>
                 </div>
             </main>

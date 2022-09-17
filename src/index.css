@@ -1,3 +1,5 @@
+/* General CSS */
+
 @font-face {
   font-family: "Montserrat";
   src: url("./fonts/Montserrat-Regular.ttf") format("truetype");
@@ -22,16 +24,15 @@
   font-weight: 700;
 }
 
+.tox-promotion {
+  display: none;
+}
+
 body, button, input, textarea {
   margin: 0;
   font-family: "Montserrat";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 :root {
@@ -54,18 +55,25 @@ html, body {
   justify-content: space-between;
 }
 
+/* Header */
 header {
   display: flex;
   background-color: var(--white);
   justify-content: space-between;
   min-height: 64px;
-  padding: 0 24px;
   border-bottom: 1px solid var(--border);
 }
 
 header > div {
   display: flex;
   align-items: center;
+}
+
+.header-box {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 14px;
+  width: 100%;
 }
 
 .logo-box a {
@@ -86,6 +94,7 @@ header > div {
 
 .auth-box {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
@@ -118,42 +127,144 @@ header > div {
   color: white;
   border: 2px solid transparent;
   border-radius: 5px;
+  white-space:nowrap
 }
 
 .login-button {
   background-color: var(--white);
   border-radius: 5px;
+  white-space:nowrap
 }
 
 .logout-button {
   background-color: var(--white);
   border-radius: 5px;
-  cursor:pointer;
 }
 
+
+@media (min-width: 600px) {
+  .header-box {
+    width: clamp(550px, 90vw, 768px);
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 916px) {
+  .header-box {
+    margin: 0 auto;
+    width: 768px;
+  }
+}
+
+/* Login and SignUp */
+.text-input {
+  height: 48px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 2px solid black;
+  font-size: 16px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.file-input {
+  width: 250px;
+}
+
+.loginMain, .signUpMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-box, .signup-box {
+  width: fit-content;
+  height: fit-content;
+  margin: 0 8px;
+  min-width: calc(320px - 28px);
+}
+
+.login-box {
+  min-width: clamp(292px, 95vw, 400px);
+}
+
+.login-form button, .signup-form button {
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 4px 16px;
+  height: 48px;
+  border: 1px solid black;
+  font-size: 16px;
+}
+
+.login-box, .signup-box {
+  background-color: var(--white);
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 0 14px;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
+}
+
+.login-title-box, .signup-title-box {
+  padding: 24px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: black;
+}
+
+.login-title-box, .signup-title-box {
+  color: white;
+}
+
+.login-box form, .signup-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px;
+}
+
+.signup-name-box {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.signup-name-box input {
+  width: 100%
+}
+
+.error-box {
+  background-color: #cf000f;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* SignUpSuccess */
+.signUpSuccess-box {
+  background-color: gray;
+  border-radius: 5px;
+  margin: 0 24px;
+}
+
+.signUpSuccess-box p {
+  padding: 48px 24px;
+}
+
+/* Home and PostCard */
 .homeMain {
   display: flex;
   flex-direction: column;
-  background-color: yellowgreen;
-}
-
-.posts-box, .heroScreen {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 0 24px;
-}
-
-.heroScreen {
-  background-color: var(--gray);
-  width: calc(100%-48px);
-  padding: 128px 24px;
 }
 
 .posts-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   background-color: var(--white);
-  padding: 32px 24px;
-  border-top: 1px solid var(--border);
+  margin: 32px 14px;
 }
 
 .posts-title {
@@ -172,13 +283,38 @@ header > div {
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
 }
 
-.postCard a {
+.postCard .info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postCard-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.post-box-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post-box-left {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 5px;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
+}
+
+.post-comments-count {
+  margin-top: auto;
+  font-weight: 500;
+}
+
+.photo-thumbnail {
+  display: none;
 }
 
 .author-avatar-card {
@@ -187,202 +323,121 @@ header > div {
   border-radius: 100px;
 }
 
-.blogMain {
+.post-card-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 8px 24px;
-}
-
-.postFull {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
-  padding: 10px;
   gap: 10px;
 }
 
-.postFull .info-box, .postCard .info-box {
+#newPostBtn {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-}
-
-.author-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.author-avatar-full {
-  height: 48px;
-  width: 48px;
-  border-radius: 100px;
-}
-
-.commentSection {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
-}
-
-.commentSection h2 {
-  padding: 8px 10px;
-}
-
-.comment {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 10px;
-}
-
-.author-avatar-comment {
-  height: 32px;
-  width: 32px;
-  border-radius: 100px;
-}
-
-.comment .info-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.commentCreator {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-}
-
-.comment-creator-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.comment-creator-form textarea {
-  height: 80px;
-  border-radius: 5px;
-  resize: none;
-}
-
-.comment-creator-form button {
+  padding: 6px 32px;
+  font-size: 16px;
   font-weight: 500;
-  padding: 5px 30px;
-  border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid var(--black);
   background-color: black;
   color: white;
-  width: fit-content;
-  cursor:pointer;
+  border-radius: 32px;
 }
 
-.new-comment {
+.post-create-box {
   display: flex;
   justify-content: center;
-  align-items: center;
+  
 }
 
-.new-comment a {
+.post-create-box a {
+  width: fit-content;
   text-decoration: none;
-  padding: 10px;
-  color: black;
 }
 
-.signUpSuccess-box {
-  background-color: gray;
-  border-radius: 5px;
-  margin: 0 24px;
+#add-icon {
+  filter: invert(98%) sepia(4%) saturate(172%) hue-rotate(193deg) brightness(115%) contrast(100%);
+  width: 36px;
 }
 
-.signUpSuccess-box p {
-  padding: 48px 24px;
-}
-
-.text-input {
-  height: 48px;
-  padding: 16px;
-  border-radius: 8px;
-  border: 2px solid black;
-  font-size: 16px;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.login-form button, .signup-form button {
-  font-weight: 600;
-  border-radius: 8px;
-  padding: 4px 16px;
-  height: 48px;
-  border: 1px solid black;
-  font-size: 16px;
-  cursor:pointer;
-}
-
-.login-box, .signup-box {
-  background-color: var(--white);
-  border-radius: 5px;
-  border: 1px solid black;
-  margin: 0 24px;
-  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
-}
-
-.title-box {
-  padding: 24px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  background-color: black;
-}
-
-.title-box {
-  color: white;
-}
-
-.login-box form, .signup-box form {
+.post-modification-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 24px;
-}
-
-.name-box {
-  display: flex;
-  width: 100%;
   gap: 10px;
 }
 
-.name-box input {
-  width: 100%;
+
+.post-modification-anchor {
+  color: black;
+  text-decoration: none;
 }
 
-.error-box {
-  background-color: #cf000f;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.success-box {
-  background-color: #009944;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-footer {
+.post-modification-button {
   display: flex;
   justify-content: center;
-  background-color: var(--white);
-  padding: 8px 0;
-  border-top: 1px solid var(--border);
+  align-items: center;
+  padding: 4px 8px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: white;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.icon {
+  height: 24px;
+}
+
+@media (min-width: 600px) {
+
+  .heroScreen {
+    margin: 0 auto;
+    width: clamp(550px, 90vw, 768px);
+  }
+
+  .photo-thumbnail {
+    display: inline-block;
+    object-fit: cover;
+    width: 192px;
+    height: 100%;
+  }
+
+  .posts-box {
+    margin: 32px 0;
+    margin: 0 auto;
+    width: clamp(550px, 90vw, 768px);
+  }
+
+  .postCard-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+@media (min-width: 916px) {
+
+  .heroScreen {
+    margin: 0 auto;
+    width: 768px;
+  }
+
+  .posts-box {
+    margin: 32px auto;
+    width: 768px;
+  }
+
+  .photo-thumbnail {
+    display: inline-block;
+    object-fit: fill;
+    width: 256px;
+    height: auto;
+  }
+
+  .postCard-container {
+    flex-direction: row;
+    gap: 32px;
+  }
 }
 
 
+/* CreatePost and UpdatePost */
 .more-info form {
   display: flex;
   flex-direction: column;
@@ -394,9 +449,7 @@ footer {
   border-radius: 5px;
 }
 
-.tox-promotion {
-  display: none;
-}
+
 
 .editor-title-box{
   display: flex;
@@ -478,7 +531,6 @@ footer {
   height: 24px;
 }
 
-
 .editor-submit-box {
   display: flex;
   align-items: center;
@@ -511,39 +563,158 @@ footer {
 }
 
 .editor-box {
+  margin: 0 auto;
   padding: 0px 24px;
 }
 
-#newPostBtn {
+
+@media (min-width: 600px) {
+  .editor-box {
+    width: clamp(550px, 90vw, 768px);
+  }
+}
+
+@media (min-width: 916px) {
+  .editor-box {
+    width: 768px;
+  }
+}
+
+/* DeletePost and PostCardDel */
+
+
+.delete-post-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.postCardDel {
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
+}
+
+.postCardDel .del-info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postCardDel-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.del-post-box-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.del-post-box-left {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+
+.del-post-comments-count {
+  margin-top: auto;
+  font-weight: 500;
+}
+
+.del-photo-thumbnail {
+  display: none;
+}
+
+.del-author-avatar-card {
+  height: 24px;
+  width: 24px;
+  border-radius: 100px;
+}
+
+.delete-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.delete-form-div {
+  display: flex;
+  gap: 16px;
+}
+
+.delete-input {
+  width: calc(140px + 20%);
+  height: 32px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px solid black;
+  font-size: 16px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+
+.delete-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6px 32px;
+  padding: 4px 8px;
   font-size: 16px;
   font-weight: 500;
-  border: 1px solid var(--black);
   background-color: black;
   color: white;
-  border-radius: 32px;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  width: fit-content;
 }
 
-.post-create-box {
+@media (min-width: 600px) {
+  .delete-post-box {
+    width: clamp(550px, 90vw, 768px);
+    margin: 0 auto;
+  }
+
+  .del-photo-thumbnail {
+    display: inline-block;
+    object-fit: cover;
+    width: 192px;
+    height: 100%;
+  }
+
+  .postCardDel-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+@media (min-width: 916px) {
+  .delete-post-box {
+    width: 768px;
+    margin: 0 auto;
+  }
+
+  .del-photo-thumbnail {
+    display: inline-block;
+    object-fit: fill;
+    width: 256px;
+    height: auto;
+  }
+
+  .postCardDel-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+/* Footer */
+footer {
   display: flex;
   justify-content: center;
-  
-}
-
-.post-create-box a {
-  width: fit-content;
-  text-decoration: none;
-}
-
-#add-icon {
-  filter: invert(98%) sepia(4%) saturate(172%) hue-rotate(193deg) brightness(115%) contrast(100%);
-  width: 36px;
-}
-
-.post-card-buttons {
-  display: flex;
-  gap: 10px;
+  background-color: var(--white);
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
 }
