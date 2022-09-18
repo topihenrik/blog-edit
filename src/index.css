@@ -57,6 +57,8 @@ html, body {
 
 /* Header */
 header {
+  position: sticky;
+  top: 0px;
   display: flex;
   background-color: var(--white);
   justify-content: space-between;
@@ -144,6 +146,7 @@ header > div {
 
 @media (min-width: 600px) {
   .header-box {
+    box-sizing: border-box;
     width: clamp(550px, 90vw, 768px);
     margin: 0 auto;
   }
@@ -151,6 +154,7 @@ header > div {
 
 @media (min-width: 916px) {
   .header-box {
+    box-sizing: border-box;
     margin: 0 auto;
     width: 768px;
   }
@@ -172,10 +176,11 @@ header > div {
 }
 
 .loginMain, .signUpMain {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  padding: 16px 0;
   height: 100%;
 }
 
@@ -242,6 +247,29 @@ header > div {
   border-radius: 5px;
 }
 
+@media (min-width: 600px) {
+  .login-box {
+    margin: 0 auto;
+  }
+
+  .signup-box {
+    margin: 0 auto;
+  }
+}
+
+
+@media (min-width: 916px) {
+  .login-box {
+    margin: 0 auto;
+    width: 400px;
+  }
+
+  .signup-box {
+    margin: 0 auto;
+    width: 500px;
+  }
+}
+
 /* SignUpSuccess */
 .signUpSuccess-box {
   background-color: gray;
@@ -255,8 +283,12 @@ header > div {
 
 /* Home and PostCard */
 .homeMain {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 16px 0;
 }
 
 .posts-box {
@@ -400,6 +432,7 @@ header > div {
   }
 
   .posts-box {
+    box-sizing: border-box;
     margin: 32px 0;
     margin: 0 auto;
     width: clamp(550px, 90vw, 768px);
@@ -419,6 +452,7 @@ header > div {
   }
 
   .posts-box {
+    box-sizing: border-box;
     margin: 32px auto;
     width: 768px;
   }
@@ -438,13 +472,21 @@ header > div {
 
 
 /* CreatePost and UpdatePost */
-.more-info form {
+.editorMain {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 0;
+  height: 100%;
+}
+
+.editor-box {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 16px;
-  /* max-width: 512px; */
-  /* background-color: var(--gray); */
+  margin: 0 14px;
   border: solid 2px black;
   border-radius: 5px;
 }
@@ -465,8 +507,6 @@ header > div {
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
   }
-
-
 }
 
 
@@ -562,26 +602,32 @@ header > div {
   box-sizing: border-box;
 }
 
-.editor-box {
-  margin: 0 auto;
-  padding: 0px 24px;
-}
-
 
 @media (min-width: 600px) {
   .editor-box {
+    margin: 0 auto;
+    box-sizing: border-box;
     width: clamp(550px, 90vw, 768px);
   }
 }
 
 @media (min-width: 916px) {
   .editor-box {
+    margin: 0 auto;
+    box-sizing: border-box;
     width: 768px;
   }
 }
 
 /* DeletePost and PostCardDel */
-
+.deletePost {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 16px 0;
+}
 
 .delete-post-box {
   display: flex;
