@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { useNavigate } from 'react-router-dom';
 import uploadIcon from "../../icons/file_upload.png";
+import { nanoid } from "nanoid";
 
 
 export default function CreatePost(props) {
@@ -32,9 +33,9 @@ export default function CreatePost(props) {
         if (editorRef.current) {
             const bearer = "Bearer " + localStorage.getItem("token");
             const formData = new FormData();
-            formData.append("title", e.target.title.value);
+            formData.append("title", editorRef.current.dom.select('h1')[0]?.innerText??"");
             formData.append("content", editorRef.current.getContent());
-            formData.append("description", editorRef.current.dom.select('p')[0].innerText);
+            formData.append("description", editorRef.current.dom.select('p')[0]?.innerText??"");
             formData.append("photo", file);
             formData.append("published", e.target.published.checked);
             fetch("http://localhost:3000/auth/posts", 
@@ -65,10 +66,6 @@ export default function CreatePost(props) {
             <div className="editor-box">
                 <div className="more-info">
                     <form className="editor-form" onSubmit={handleSubmit}>
-                        <div className="editor-title-box">
-                            <label><h3>Title:</h3></label>
-                            <input className="title-input" name="title"/>
-                        </div>
                         <Editor
                             tinymceScriptSrc={process.env.PUBLIC_URL + "/tinymce/tinymce.min.js"}
                             onInit={(evt, editor) => editorRef.current = editor}
@@ -79,10 +76,20 @@ export default function CreatePost(props) {
                                   'advlist anchor autolink charmap code codesample fullscreen help link lists paste preview searchreplace table visualblocks wordcount',
                               }}
                             />
+                        <div className="editor-error-box">
+                            {result.errors &&
+                            result.errors.map((error) => {
+                                return(
+                                    <div className="error-box" key={nanoid()}>
+                                        <p className="error-message">{error.msg}</p>
+                                    </div>
+                                )
+                            })}
+                        </div>
                         <div className="editor-bottom-info">
                             <div className="editor-photo-box">
                                 <label htmlFor="photo"><img id="upload-icon" src={uploadIcon}/>{file?file.name:"Choose a photo"}</label>
-                                <input id="photo" name="photo" type="file" onChange={handleChange}/>
+                                <input id="photo" name="photo" type="file" accept=".png, .jpg, .jpeg" onChange={handleChange}/>
                             </div>
                             <div className="published-box">
                                 <label htmlFor="published">Publish: </label>
