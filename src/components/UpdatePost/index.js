@@ -128,8 +128,8 @@ export default function UpdatePost(props) {
                             </div>
                             <div className="editor-bottom-info">
                                 <div className="editor-photo-box">
-                                    <label htmlFor="photo"><img id="upload-icon" src={uploadIcon}/>{file?file.name:"Choose a photo"}</label>
-                                    <input id="photo" name="photo" type="file" accept=".png, .jpg, .jpeg" onChange={handleChange}/>
+                                    <label className="editor-photo-label" htmlFor="photo"><img id="upload-icon" src={uploadIcon}/>{post.photo.originalName?<span className="editor-photo-span">{post.photo.originalName}</span>:<span className="editor-photo-span">{file?file.name:"Cover image"}</span>}</label>
+                                    <input id="photo" name="photo" type="file" accept="image/png, image/jpeg" onChange={handleChange}/>
                                 </div>
                                 <div className="published-box">
                                     {!post.published?

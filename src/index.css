@@ -545,7 +545,7 @@ header > div {
 	z-index: -1;
 }
 
-.editor-photo-box label {
+.editor-photo-label {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -557,6 +557,10 @@ header > div {
   border: 2px solid black;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.editor-photo-span {
+  padding: 0 8px;
 }
 
 .editor-photo-box:focus label,

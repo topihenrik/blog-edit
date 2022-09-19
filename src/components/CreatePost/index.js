@@ -88,8 +88,8 @@ export default function CreatePost(props) {
                         </div>
                         <div className="editor-bottom-info">
                             <div className="editor-photo-box">
-                                <label htmlFor="photo"><img id="upload-icon" src={uploadIcon}/>{file?file.name:"Choose a photo"}</label>
-                                <input id="photo" name="photo" type="file" accept=".png, .jpg, .jpeg" onChange={handleChange}/>
+                                <label className="editor-photo-label" htmlFor="photo"><img id="upload-icon" src={uploadIcon}/><span className="editor-photo-span">{file?file.name:"Cover image"}</span></label>
+                                <input id="photo" name="photo" type="file" accept="image/png, image/jpeg" onChange={handleChange}/>
                             </div>
                             <div className="published-box">
                                 <label htmlFor="published">Publish: </label>
@@ -101,7 +101,6 @@ export default function CreatePost(props) {
                             <p>This post will be published in your name.<br/>Behave accordingly and respect others.</p>
                             <button>Submit Post</button>
                         </div>
-                        
                     </form>                    
                 </div>               
             </div>
