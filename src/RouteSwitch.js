@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import LogIn from "./components/LogIn";
+import SignUp from "./components/SignUp"
+import SignUpSuccess from "./components/SignUp/SignUpSuccess";
 import CreatePost from "./components/CreatePost";
 import UpdatePost from "./components/UpdatePost";
 import Footer from "./components/Footer";
@@ -18,6 +20,8 @@ export default function RouteSwitch() {
             <Routes>
                 <Route path="/" element={<Home user={user}/>}/>
                 <Route path="/login" element={<LogIn user={user} setUser={setUser}/>}/>
+                <Route path="/signup" element={<SignUp/>}/> 
+                <Route path="/signup/success" element={<SignUpSuccess/>}/>
                 <Route path="/post" element={<CreatePost user={user}/>}/>
                 <Route path="/post/:postid" element={<UpdatePost user={user}/>}/>
                 <Route path="/post/delete/:postid" element={<DeletePost user={user}/>}/>

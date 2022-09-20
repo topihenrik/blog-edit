@@ -126,28 +126,26 @@ export default function UpdatePost(props) {
                                     )
                                 })}
                             </div>
-                            <div className="editor-bottom-info">
-                                <div className="editor-photo-box">
-                                    <label className="editor-photo-label" htmlFor="photo"><img id="upload-icon" src={uploadIcon}/>{post.photo.originalName?<span className="editor-photo-span">{post.photo.originalName}</span>:<span className="editor-photo-span">{file?file.name:"Cover image"}</span>}</label>
-                                    <input id="photo" name="photo" type="file" accept="image/png, image/jpeg" onChange={handleChange}/>
-                                </div>
-                                <div className="published-box">
-                                    {!post.published?
-                                    <>
-                                        <label htmlFor="published">Publish: </label>
-                                        <input id="published" name="published" type="checkbox"/>
-                                    </>:
-                                    <>
-                                        <input id="published" name="published" type="hidden" checked={true}/>
-                                    </>}
-                                </div>
-                                <p className="editor-author">{"Author: " + post?.author?.first_name + " " + post?.author?.last_name}</p>
+                            <div className="editor-bottom-area">
+                                    <div className="editor-photo-box">
+                                        <label className="editor-photo-label" htmlFor="photo"><img id="upload-icon" src={uploadIcon}/>{post.photo.originalName?<span className="editor-photo-span">{post.photo.originalName}</span>:<span className="editor-photo-span">{file?file.name:"Cover image"}</span>}</label>
+                                        <input id="photo" name="photo" type="file" accept="image/png, image/jpeg" onChange={handleChange}/>
+                                    </div>
+                                    <div className="published-box">
+                                        {!post.published?
+                                        <>
+                                            <label htmlFor="published">Publish: </label>
+                                            <input id="published" name="published" type="checkbox"/>
+                                        </>:
+                                        <>
+                                            <input id="published" name="published" type="hidden" checked={true}/>
+                                        </>}
+                                    </div>
+                                    <p className="editor-author">{"Author: " + post?.author?.first_name + " " + post?.author?.last_name}</p>
+                                    <div className="editor-submit-box">
+                                        <button className="editor-btn-submit">Update Post</button>
+                                    </div>
                             </div>
-                            <div className="editor-submit-box">
-                                <p>This post will be updated with your name.<br/>Behave accordingly and respect others.</p>
-                                <button>Update Post</button>
-                            </div>
-                            
                         </form>                    
                     </div>               
                 </div>

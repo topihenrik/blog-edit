@@ -6,11 +6,7 @@ export default function LogIn(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [result, setResult] = useState({});
-    
     const navigate = useNavigate();
-
-
-    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -57,4 +53,3 @@ export default function LogIn(props) {
         </div>
     )
 }
-

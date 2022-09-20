@@ -86,7 +86,7 @@ export default function CreatePost(props) {
                                 )
                             })}
                         </div>
-                        <div className="editor-bottom-info">
+                        <div className="editor-bottom-area">
                             <div className="editor-photo-box">
                                 <label className="editor-photo-label" htmlFor="photo"><img id="upload-icon" src={uploadIcon}/><span className="editor-photo-span">{file?file.name:"Cover image"}</span></label>
                                 <input id="photo" name="photo" type="file" accept="image/png, image/jpeg" onChange={handleChange}/>
@@ -96,10 +96,9 @@ export default function CreatePost(props) {
                                 <input id="published" name="published" type="checkbox"/>
                             </div>
                             <p className="editor-author"><strong>{"Author: " + user?.full_name}</strong></p>
-                        </div>
-                        <div className="editor-submit-box">
-                            <p>This post will be published in your name.<br/>Behave accordingly and respect others.</p>
-                            <button>Submit Post</button>
+                            <div className="editor-submit-box">
+                                <button className="editor-btn-submit">Submit Post</button>
+                            </div>
                         </div>
                     </form>                    
                 </div>               
