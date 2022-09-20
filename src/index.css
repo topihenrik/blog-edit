@@ -499,6 +499,12 @@ header > div {
   align-items: center;
 }
 
+.author-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .postCard-container {
   display: flex;
   flex-direction: row;
