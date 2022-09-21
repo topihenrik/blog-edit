@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import uploadIcon from "../../icons/file_upload.png";
 import { useParams } from "react-router-dom";
 import { nanoid } from "nanoid";
+import LoadingIcon from "../../icons/loading.svg"
 
 export default function UpdatePost(props) {
     const { user } = props;
@@ -92,11 +93,33 @@ export default function UpdatePost(props) {
 
 
     if (error1) {
-        return <div>Error: {error1.message}</div>;
-    } else if (!isLoaded1) {
-        return <div>Loading...</div>;
+        return (
+            <div className="errorMain">
+                <div className="error-container">
+                    <h2>Error</h2>
+                    <p>{error1.message}</p>
+                </div>
+            </div>
+        )
     } else if (post === undefined) {
-        return <div>No post!</div>
+        return (
+            <div className="noContentMain">
+                <div className="no-content-container">
+                    <h2>No post found</h2>
+                </div>
+            </div>
+        )
+    } else if (!isLoaded1) {
+        return (
+            <div className="loadingMain">
+                <div className="loading-container">
+                    <div className="loading-icon-box">
+                        <img id="loading-icon" src={LoadingIcon}/>
+                    </div>
+                    <p>Loading Post...</p>
+                </div>
+            </div>
+        )
     } else {
         return(
             <main className="editorMain">

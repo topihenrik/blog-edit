@@ -18,7 +18,7 @@ export default function PostCardDel(props) {
                     </div>
                     <h2>{post.title}</h2>
                     <p>{post.description.split(' ').slice(0, 50).join(' ') + "..."}</p>
-                    <p className="del-post-comments-count">{post.count + " comments"}</p>
+                    <p className="del-post-comments-count">{count + " comments"}</p>
                 </div>
                 <div className="del-post-box-right">
                     <img className="del-photo-thumbnail" src={"http://localhost:3000/"+post.photo.path}/>

@@ -64,6 +64,55 @@ html, body {
   width: 100%;
 }
 
+
+/* Loading and Error */
+
+.loadingMain, .noContentMain, .errorMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: auto 0;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.no-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.loading-icon-box {
+  background-color: var(--gray);
+  padding: 14px;
+  border-radius: 5px;
+}
+
+#loading-icon {
+  filter: brightness(0) saturate(100%);
+  width: 48px;
+}
+
+
+
 /* Header */
 header {
   position: sticky;

@@ -14,7 +14,7 @@ export default function SignUpSuccess(props) {
                 <div className="success-title-box">
                     <h2>Account Created 👏</h2>
                 </div>
-                <p>Proceed to login so you may partake in discussions with other users.</p>
+                <p>Proceed to login so that you may share your ideas.</p>
             </div>
         </div>
     )
