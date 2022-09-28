@@ -48,15 +48,6 @@ export default function Home(props) {
                 </div>
             </div>
         )
-    } else if (posts === undefined) {
-        return (
-            <div className="noContentMain">
-                <div className="no-content-container">
-                    <h2>No posts found</h2>
-                    <p>🥇 Be the first creator to make a post!</p>
-                </div>
-            </div>
-        )
     } else if (!isLoaded) {
         return (
             <div className="loadingMain">
@@ -65,6 +56,20 @@ export default function Home(props) {
                         <img id="loading-icon" src={LoadingIcon}/>
                     </div>
                     <p>Loading Posts...</p>
+                </div>
+            </div>
+        )
+    } else if (posts === undefined) {
+        return (
+            <div className="noContentMain">
+                <div className="no-content-container">
+                <div className="post-create-box">
+                    <a href="/post">
+                        <button id="newPostBtn"><img id="add-icon" src={addIcon}/>Create New Post</button>
+                    </a> 
+                </div>
+                    <h2>No posts found</h2>
+                    <p>🥇 Share your ideas and make your first post!</p>
                 </div>
             </div>
         )

@@ -101,14 +101,6 @@ export default function UpdatePost(props) {
                 </div>
             </div>
         )
-    } else if (post === undefined) {
-        return (
-            <div className="noContentMain">
-                <div className="no-content-container">
-                    <h2>No post found</h2>
-                </div>
-            </div>
-        )
     } else if (!isLoaded1) {
         return (
             <div className="loadingMain">
@@ -117,6 +109,14 @@ export default function UpdatePost(props) {
                         <img id="loading-icon" src={LoadingIcon}/>
                     </div>
                     <p>Loading Post...</p>
+                </div>
+            </div>
+        )
+    } else if (post === undefined) {
+        return (
+            <div className="noContentMain">
+                <div className="no-content-container">
+                    <h2>No post found</h2>
                 </div>
             </div>
         )
@@ -151,7 +151,7 @@ export default function UpdatePost(props) {
                             </div>
                             <div className="editor-bottom-area">
                                     <div className="editor-photo-box">
-                                        <label className="editor-photo-label" htmlFor="photo"><img id="upload-icon" src={uploadIcon}/>{post.photo.originalName?<span className="editor-photo-span">{post.photo.originalName}</span>:<span className="editor-photo-span">{file?file.name:"Cover image"}</span>}</label>
+                                        <label className="editor-photo-label" htmlFor="photo"><img id="upload-icon" src={uploadIcon}/><span className="editor-photo-span">{file?file.name:post.photo.originalName?post.photo.originalName:"Cover image"}</span></label>
                                         <input id="photo" name="photo" type="file" accept="image/png, image/jpeg" onChange={handleChange}/>
                                     </div>
                                     <div className="published-box">
