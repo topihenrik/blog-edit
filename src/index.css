@@ -42,17 +42,24 @@ body, button, input, textarea {
   --border: #00000010;
 }
 
-html, body {
-  height: 100vh;
+html, body, #root {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
 #root {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  min-height: 100%;
 }
 
 .error-box {
@@ -345,7 +352,7 @@ header > div {
   justify-content: center;
   align-items: center;
   padding: 16px 0;
-  height: 100%;
+  flex: 1 0 0;
 }
 
 .login-box, .signup-box {
@@ -479,7 +486,7 @@ header > div {
   justify-content: center;
   align-items: center;
   padding: 16px 0;
-  height: 100%;
+  flex: 1 0 0;
 }
 
 
@@ -508,22 +515,40 @@ header > div {
   padding: 48px 24px;
 }
 
-/* Home and PostCard */
+/* Home, HeroScreen and PostCard */
 .homeMain {
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: 16px;
+  padding-bottom: 16px;
+}
+
+.heroScreen {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
-  padding: 16px 0;
+  gap: 10px;
+  background-color: var(--gray);
+  height: 256px;
 }
+
+.hero-box {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 0 34px;
+  width: 85%;
+  gap: 8px;
+}
+
 
 .posts-box {
   display: flex;
   flex-direction: column;
   gap: 10px;
   background-color: var(--white);
-  margin: 32px 14px;
+  margin: 0 14px;
 }
 
 .posts-title {
@@ -661,8 +686,13 @@ header > div {
 @media (min-width: 600px) {
 
   .heroScreen {
+    box-sizing: border-box;
     margin: 0 auto;
     width: clamp(550px, 90vw, 768px);
+  }
+
+  .hero-box {
+    width: 500px;
   }
 
   .photo-thumbnail {
@@ -694,15 +724,15 @@ header > div {
 
   .posts-box {
     box-sizing: border-box;
-    margin: 32px auto;
+    margin: 0 auto;
     width: 768px;
   }
 
   .photo-thumbnail {
     display: inline-block;
-    object-fit: fill;
+    object-fit: cover;
     width: 256px;
-    height: auto;
+    height: 100%;
   }
 
   .postCard-container {
@@ -719,7 +749,7 @@ header > div {
   flex-direction: column;
   justify-content: center;
   padding: 16px 0;
-  height: 100%;
+  flex: 1 0 0;
 }
 
 .editor-box {
@@ -922,8 +952,8 @@ header > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
   padding: 16px 0;
+  flex: 1 0 0;
 }
 
 .delete-post-box {
@@ -1043,9 +1073,9 @@ header > div {
 
   .del-photo-thumbnail {
     display: inline-block;
-    object-fit: fill;
+    object-fit: cover;
     width: 256px;
-    height: auto;
+    height: 100%;
   }
 
   .postCardDel-container {
@@ -1056,6 +1086,7 @@ header > div {
 
 /* Footer */
 footer {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   background-color: var(--white);

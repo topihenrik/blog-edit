@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import PostCard from "./PostCard";
+import HeroScreen from "./HeroScreen";
 import addIcon from "../../icons/add.png";
 import LoadingIcon from "../../icons/loading.svg"
 
@@ -76,6 +77,7 @@ export default function Home(props) {
     } else {
         return(
             <main className="homeMain">
+                <HeroScreen/>
                 <div className="posts-box">
                     <div className="post-create-box">
                         <a href="/post">

@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import MenuIcon from "../../icons/menu.png"
-
+import { useNavigate } from 'react-router-dom';
 
 export default function Header(props) {
     const { user, setUser } = props;
     const [ menuVis, setMenuVis ] = useState("dispNone");
+    const navigate = useNavigate();
 
     const handleClick = (e) => {
         e.preventDefault();
         localStorage.clear();
         setUser(null);
+        navigate("../login", {replace: true});
     }
 
     const handleClickMenu = (e) => {
@@ -26,7 +28,7 @@ export default function Header(props) {
             <div className="header-box">
                 <div className="header-top-box">
                     <div className="logo-box">
-                        <a href="/"><h1>{"<Blog/>"}</h1></a>
+                        <a href="/"><h1>{"<Edit/>"}</h1></a>
                     </div>
                     <button onClick={handleClickMenu} id="menuBtn"><img id="menu" src={MenuIcon}/></button>
                 </div>
