@@ -5,8 +5,8 @@ import { DateTime } from "luxon";
 export default function PostCardDel(props) {
     const {post, count} = props;
     return(
-        <div className="postCardDel">
-            <div className="postCardDel-container">
+        <div className="post-card-del">
+            <div className="post-card-del-container">
                 <div className="del-post-box-left">
                     <div className="del-info-box">
                         <div className="del-author-box">

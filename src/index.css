@@ -74,13 +74,15 @@ body {
 
 /* Loading and Error */
 
-.loadingMain, .noContentMain, .errorMain {
+.loading-main, .no-content-main, .error-main {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  flex: 1 0 0;
   height: 100%;
   width: 100%;
+  gap: 16px;
   margin: auto 0;
+  padding-bottom: 16px;
 }
 
 .loading-container {
@@ -88,6 +90,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: auto 0;
   gap: 8px;
   font-weight: 500;
 }
@@ -122,6 +125,7 @@ body {
 
 /* Header */
 header {
+  z-index: 1;
   position: sticky;
   top: 0px;
   display: flex;
@@ -206,13 +210,17 @@ header > div {
   white-space:nowrap
 }
 
-.user-name {
+
+.profile-button {
+  background-color: black;
+  color: white;
   font-weight: 500;
+  border-radius: 5px;
   white-space: nowrap;
 }
 
 .logout-button {
-  background-color: var(--white);
+  background-color: white;
   border-radius: 5px;
   white-space: nowrap;
 }
@@ -230,7 +238,7 @@ header > div {
   display: none;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   #menuBtn {
     display: block;
     background-color: white;
@@ -330,6 +338,7 @@ header > div {
   }
 }
 
+
 /* Login and SignUp */
 .text-input {
   height: 48px;
@@ -345,7 +354,7 @@ header > div {
   width: 250px;
 }
 
-.loginMain, .signUpMain {
+.login-main, .signup-main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -411,6 +420,33 @@ header > div {
 
 .signup-name-box input {
   width: 100%
+}
+
+.signup-dob-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.signup-select-box {
+  display: flex;
+  gap: 10px;
+}
+
+.dob-select {
+  width: 100%;
+  height: 48px;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.dob-option {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .error-box {
@@ -479,7 +515,7 @@ header > div {
 
 /* SignUpSuccess */
 
-.signUpSuccess {
+.signup-success {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -490,7 +526,7 @@ header > div {
 }
 
 
-.signUpSuccess-box {
+.signup-success-box {
   box-sizing: border-box;
   width: fit-content;
   height: fit-content;
@@ -511,12 +547,201 @@ header > div {
   color: white;
 }
 
-.signUpSuccess-box p {
+.signup-success-box p {
   padding: 48px 24px;
 }
 
+
+/* Profile and ProfileEdit */
+.profile-main, .profile-edit-main, .profile-delete-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.profile-container, .profile-edit-container, .profile-delete-container {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: fit-content;
+  box-sizing: border-box;
+  margin: 0 14px;
+  width: 568px;
+}
+
+
+
+
+.profile-title-box, .profile-edit-title-box, .profile-delete-title-box {
+  padding: 24px;
+  background-color: black;
+  color: white;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  box-sizing: border-box;
+}
+
+
+
+.profile-content-box, .profile-delete-content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px;
+}
+
+.profile-personal-information {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-personal-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-personal-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#author-avatar-profile {
+  width: 112px;
+  height: 112px;
+}
+
+.profile-action-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.profile-action-buttons a {
+  text-decoration: none;
+  width: fit-content;
+}
+
+.profile-action-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 8px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: white;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  width: 180px;
+}
+
+
+.profile-avatar-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-weight: 700;
+  color: black;
+  background-color: white;
+  padding: 8px;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-avatar-span {
+  padding: 0 8px;
+}
+
+.profile-edit-button {
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 4px 16px;
+  height: 48px;
+  border: 1px solid black;
+  font-size: 16px;
+}
+
+
+.profile-delete-box {
+  margin: 24px;
+}
+
+.profile-delete-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px;
+}
+
+
+.profile-delete-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-delete-form-div {
+  display: flex;
+  gap: 16px;
+}
+
+.profile-delete-input {
+  width: calc(140px + 20%);
+  height: 32px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px solid black;
+  font-size: 16px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.profile-delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 8px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: black;
+  color: white;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+  .profile-edit-container, .profile-delete-container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: clamp(500px, 90vw, 768px);
+  }
+}
+
+@media (min-width: 916px) {
+  .profile-edit-container, .profile-delete-container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 768px;
+  }
+}
+
+
 /* Home, HeroScreen and PostCard */
-.homeMain {
+.home-main {
   display: flex;
   flex-direction: column;
   flex: 1 0 0;
@@ -524,7 +749,7 @@ header > div {
   padding-bottom: 16px;
 }
 
-.heroScreen {
+.hero-screen {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -561,13 +786,13 @@ header > div {
   width: calc(100% - 2px);
 }
 
-.postCard {
+.post-card {
   background-color: var(--white);
   border-radius: 5px;
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
 }
 
-.postCard .info-box {
+.post-card .info-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -579,7 +804,7 @@ header > div {
   gap: 10px;
 }
 
-.postCard-container {
+.post-card-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -685,7 +910,7 @@ header > div {
 
 @media (min-width: 600px) {
 
-  .heroScreen {
+  .hero-screen {
     box-sizing: border-box;
     margin: 0 auto;
     width: clamp(550px, 90vw, 768px);
@@ -709,7 +934,7 @@ header > div {
     width: clamp(550px, 90vw, 768px);
   }
 
-  .postCard-container {
+  .post-card-container {
     flex-direction: row;
     gap: 32px;
   }
@@ -717,7 +942,7 @@ header > div {
 
 @media (min-width: 916px) {
 
-  .heroScreen {
+  .hero-screen {
     margin: 0 auto;
     width: 768px;
   }
@@ -735,7 +960,7 @@ header > div {
     height: 100%;
   }
 
-  .postCard-container {
+  .post-card-container {
     flex-direction: row;
     gap: 32px;
   }
@@ -743,7 +968,7 @@ header > div {
 
 
 /* CreatePost and UpdatePost */
-.editorMain {
+.editor-main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -947,7 +1172,7 @@ header > div {
 }
 
 /* DeletePost and PostCardDel */
-.deletePost {
+.delete-post {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -963,19 +1188,19 @@ header > div {
   margin: 0 14px;;
 }
 
-.postCardDel {
+.post-card-del {
   background-color: var(--white);
   border-radius: 5px;
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
 }
 
-.postCardDel .del-info-box {
+.post-card-del .del-info-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.postCardDel-container {
+.post-card-del-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1059,7 +1284,7 @@ header > div {
     height: 100%;
   }
 
-  .postCardDel-container {
+  .post-card-del-container {
     flex-direction: row;
     gap: 32px;
   }
@@ -1078,7 +1303,7 @@ header > div {
     height: 100%;
   }
 
-  .postCardDel-container {
+  .post-card-del-container {
     flex-direction: row;
     gap: 32px;
   }
@@ -1092,4 +1317,22 @@ footer {
   background-color: var(--white);
   padding: 8px 0;
   border-top: 1px solid var(--border);
+}
+
+.footer-author {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-author a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+#github-logo {
+  height: 1rem;
+  margin: 0 4px;
 }

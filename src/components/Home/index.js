@@ -13,8 +13,6 @@ export default function Home(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [posts, setPosts] = useState({});
 
-    
-
     useEffect(() => {
 
         if (!user) {
@@ -42,7 +40,7 @@ export default function Home(props) {
 
     if (error) {
         return (
-            <div className="errorMain">
+            <div className="error-main">
                 <div className="error-container">
                     <h2>Error</h2>
                     <p>{error.message}</p>
@@ -51,7 +49,8 @@ export default function Home(props) {
         )
     } else if (!isLoaded) {
         return (
-            <div className="loadingMain">
+            <div className="loading-main">
+                <HeroScreen/>
                 <div className="loading-container">
                     <div className="loading-icon-box">
                         <img id="loading-icon" src={LoadingIcon}/>
@@ -62,13 +61,14 @@ export default function Home(props) {
         )
     } else if (posts === undefined) {
         return (
-            <div className="noContentMain">
+            <div className="no-content-main">
+                <HeroScreen/>
                 <div className="no-content-container">
-                <div className="post-create-box">
-                    <a href="/post">
-                        <button id="newPostBtn"><img id="add-icon" src={addIcon}/>Create New Post</button>
-                    </a> 
-                </div>
+                    <div className="post-create-box">
+                        <a href="/post">
+                            <button id="newPostBtn"><img id="add-icon" src={addIcon}/>Create New Post</button>
+                        </a> 
+                    </div>
                     <h2>No posts found</h2>
                     <p>🥇 Share your ideas and make your first post!</p>
                 </div>
@@ -76,7 +76,7 @@ export default function Home(props) {
         )
     } else {
         return(
-            <main className="homeMain">
+            <main className="home-main">
                 <HeroScreen/>
                 <div className="posts-box">
                     <div className="post-create-box">

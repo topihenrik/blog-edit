@@ -7,8 +7,8 @@ import DeleteIcon from "../../../icons/delete.png"
 export default function PostCard(props) {
     const {post} = props;
     return(
-        <div className="postCard">
-            <div className="postCard-container">
+        <div className="post-card">
+            <div className="post-card-container">
                 <div className="post-box-left">
                     <div className="info-box">
                         <div className="author-box">

@@ -62,7 +62,7 @@ export default function CreatePost(props) {
     }
 
     return(
-        <main className="editorMain">
+        <main className="editor-main">
             <div className="editor-box">
                 <div className="more-info">
                     <form className="editor-form" onSubmit={handleSubmit}>
