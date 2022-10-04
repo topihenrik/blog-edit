@@ -12,7 +12,7 @@ export default function PostCard(props) {
                 <div className="post-box-left">
                     <div className="info-box">
                         <div className="author-box">
-                            <img className="author-avatar-card" src={"http://localhost:3000/"+post.author.avatar.path}/>
+                            <img className="author-avatar-card" src={`${process.env.REACT_APP_API_URL}/`+post.author.avatar.path}/>
                             <h4>{post.author.first_name + " " + post.author.last_name}</h4>
                         </div>                       
                         <h4>{DateTime.fromJSDate(new Date(post.timestamp)).toLocaleString(DateTime.DATE_MED)}</h4>
@@ -27,7 +27,7 @@ export default function PostCard(props) {
                     </div>
                 </div>
                 <div className="post-box-right">
-                    <img className="photo-thumbnail" src={"http://localhost:3000/"+post.photo.path}/>
+                    <img className="photo-thumbnail" src={`${process.env.REACT_APP_API_URL}/`+post.photo.path}/>
                 </div>
             </div>
         </div>

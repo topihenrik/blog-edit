@@ -20,7 +20,7 @@ export default function Home(props) {
         }
 
         const bearer = "Bearer " + localStorage.getItem("token");
-        fetch("http://localhost:3000/auth/posts/author", 
+        fetch(`${process.env.REACT_APP_API_URL}/auth/posts/author`, 
             {
                 method: "GET",
                 headers: {

@@ -38,7 +38,7 @@ export default function CreatePost(props) {
             formData.append("description", editorRef.current.dom.select('p')[0]?.innerText??"");
             formData.append("photo", file);
             formData.append("published", e.target.published.checked);
-            fetch("http://localhost:3000/auth/posts", 
+            fetch(`${process.env.REACT_APP_API_URL}/auth/posts`, 
                 {
                     method: "POST",
                     headers: {

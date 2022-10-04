@@ -25,7 +25,7 @@ export default function DeletePost(props) {
         }
 
         const bearer = "Bearer " + localStorage.getItem("token");
-        fetch(`http://localhost:3000/auth/posts/${postid}`,
+        fetch(`${process.env.REACT_APP_API_URL}/auth/posts/${postid}`,
             {
                 headers: {
                     "Authorization": bearer
@@ -47,7 +47,7 @@ export default function DeletePost(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const bearer = "Bearer " + localStorage.getItem("token");
-        fetch(`http://localhost:3000/auth/posts/${postid}`,
+        fetch(`${process.env.REACT_APP_API_URL}/auth/posts/${postid}`,
             {
                 method: "DELETE",
                 headers: {

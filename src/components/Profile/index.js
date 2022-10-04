@@ -19,7 +19,7 @@ export default function Profile(props) {
         }
 
         const bearer = "Bearer " + localStorage.getItem("token");
-        fetch("http://localhost:3000/auth/user", 
+        fetch(`${process.env.REACT_APP_API_URL}/auth/user`, 
             {
                 headers: {
                     "Authorization": bearer
@@ -88,7 +88,7 @@ export default function Profile(props) {
                                 </div>
                                 <div>
                                     
-                                        <img id="author-avatar-profile" src={"http://localhost:3000/"+result?.user?.avatar?.path}/>
+                                        <img id="author-avatar-profile" src={`${process.env.REACT_APP_API_URL}/`+result?.user?.avatar?.path}/>
                                     </div>
                             </div>
                         </div>

@@ -29,7 +29,7 @@ export default function UpdatePost(props) {
         }
 
         const bearer = "Bearer " + localStorage.getItem("token");
-        fetch(`http://localhost:3000/auth/posts/${postid}/edit`,
+        fetch(`${process.env.REACT_APP_API_URL}/auth/posts/${postid}/edit`,
             {
                 headers: {
                     "Authorization": bearer
@@ -60,14 +60,13 @@ export default function UpdatePost(props) {
         if (editorRef.current) {
             const bearer = "Bearer " + localStorage.getItem("token");
             const formData = new FormData();
-            console.log(postid);
             formData.append("postID", postid);
             formData.append("title", editorRef.current.dom.select('h1')[0]?.innerText??"");
             formData.append("content", editorRef.current.getContent());
             formData.append("description", editorRef.current.dom.select('p')[0]?.innerText??"");
             formData.append("photo", file);
             formData.append("published", e.target.published.checked);
-            fetch("http://localhost:3000/auth/posts", 
+            fetch(`${process.env.REACT_APP_API_URL}/auth/posts`, 
                 {
                     method: "PUT",
                     headers: {

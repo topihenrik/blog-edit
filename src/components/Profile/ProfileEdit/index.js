@@ -34,7 +34,7 @@ export default function ProfileEdit(props) {
         setYears(loopYears);
 
         const bearer = "Bearer " + localStorage.getItem("token");
-        fetch("http://localhost:3000/auth/user/edit",
+        fetch(`${process.env.REACT_APP_API_URL}/auth/user/edit`,
             {
                 headers: {
                     "Authorization": bearer
@@ -84,7 +84,7 @@ export default function ProfileEdit(props) {
         formData.append("dob", dob_iso);
         formData.append("avatar", file);
         console.log(formData);
-        fetch("http://localhost:3000/auth/user/basic",
+        fetch(`${process.env.REACT_APP_API_URL}/auth/user/basic`,
             {
                 headers: {
                     "Authorization": bearer
@@ -108,7 +108,7 @@ export default function ProfileEdit(props) {
         e.preventDefault();
         const bearer = "Bearer " + localStorage.getItem("token");
 
-        fetch("http://localhost:3000/auth/user/password",
+        fetch(`${process.env.REACT_APP_API_URL}/auth/user/password`,
             {
                 headers: {
                     "Authorization": bearer

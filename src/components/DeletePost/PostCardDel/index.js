@@ -10,7 +10,7 @@ export default function PostCardDel(props) {
                 <div className="del-post-box-left">
                     <div className="del-info-box">
                         <div className="del-author-box">
-                            <img className="del-author-avatar-card" src={"http://localhost:3000/"+post.author.avatar.path}/>
+                            <img className="del-author-avatar-card" src={`${process.env.REACT_APP_API_URL}/`+post.author.avatar.path}/>
                             <h3>{post.author.first_name + " " + post.author.last_name}</h3>
                         </div>
                         
@@ -21,7 +21,7 @@ export default function PostCardDel(props) {
                     <p className="del-post-comments-count">{count + " comments"}</p>
                 </div>
                 <div className="del-post-box-right">
-                    <img className="del-photo-thumbnail" src={"http://localhost:3000/"+post.photo.path}/>
+                    <img className="del-photo-thumbnail" src={`${process.env.REACT_APP_API_URL}/`+post.photo.path}/>
                 </div>
             </div>
         </div>
