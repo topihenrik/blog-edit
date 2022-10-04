@@ -25,3 +25,4 @@ yarn-error.log*
 # other
 /public/tinymce/
 .env*
+.vercel

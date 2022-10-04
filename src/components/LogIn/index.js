@@ -20,7 +20,6 @@ export default function LogIn(props) {
             .then((result) => {
                 setIsLoaded(true);
                 setResult(result);
-                console.log(result);
                 if (result.status == 201) {
                     localStorage.setItem("token", result.token);
                     localStorage.setItem("user", JSON.stringify(result.user));
