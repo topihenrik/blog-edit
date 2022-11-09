@@ -17,7 +17,7 @@ export default function PostCardDel(props) {
                         <h3>{DateTime.fromJSDate(new Date(post.timestamp)).toLocaleString(DateTime.DATE_MED)}</h3>
                     </div>
                     <h2>{post.title}</h2>
-                    <p>{post.description.split(' ').slice(0, 50).join(' ') + "..."}</p>
+                    <p className="del-post-description">{post.description.split(' ').slice(0, 28).join(' ') + "..."}</p>
                     <p className="del-post-comments-count">{count + " comments"}</p>
                 </div>
                 <div className="del-post-box-right">

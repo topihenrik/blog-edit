@@ -125,7 +125,7 @@ body {
 
 /* Header */
 header {
-  z-index: 1;
+  z-index: 2;
   position: sticky;
   top: 0px;
   display: flex;
@@ -777,6 +777,11 @@ header > div {
   gap: 8px;
 }
 
+.hero-box > p {
+  line-height: 20px;
+  word-break: break-word;
+}
+
 
 .posts-box {
   display: flex;
@@ -840,12 +845,19 @@ header > div {
 
 .photo-thumbnail {
   display: none;
+  max-height: 220px;
+  object-fit: cover;
 }
 
 .author-avatar-card {
   height: 24px;
   width: 24px;
   border-radius: 100px;
+}
+
+.post-description {
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .post-card-buttons {
@@ -1236,6 +1248,13 @@ header > div {
 
 .del-photo-thumbnail {
   display: none;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.del-post-description {
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .del-author-avatar-card {

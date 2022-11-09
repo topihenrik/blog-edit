@@ -18,7 +18,7 @@ export default function PostCard(props) {
                         <h4>{DateTime.fromJSDate(new Date(post.timestamp)).toLocaleString(DateTime.DATE_MED)}</h4>
                     </div>
                     <h2>{post.title}</h2>
-                    <p>{post.description.split(' ').slice(0, 50).join(' ') + " ..."}</p>
+                    <p className="post-description">{post.description.split(' ').slice(0, 28).join(' ') + " ..."}</p>
                     <p className="post-comments-count">{post.count + " comments"}</p>
                     {post.published?<p className="post-published-true">Published</p>:<p className="post-published-false">Not published</p>}
                     <div className="post-modification-buttons">
