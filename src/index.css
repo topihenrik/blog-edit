@@ -845,7 +845,7 @@ header > div {
 
 .photo-thumbnail {
   display: none;
-  max-height: 220px;
+  max-height: 200px;
   object-fit: cover;
 }
 
@@ -1248,7 +1248,7 @@ header > div {
 
 .del-photo-thumbnail {
   display: none;
-  max-height: 220px;
+  max-height: 200px;
   object-fit: cover;
 }
 
