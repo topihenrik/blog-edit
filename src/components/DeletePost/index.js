@@ -19,6 +19,8 @@ export default function DeletePost(props) {
     const [isLoaded2, setIsLoaded2] = useState(false);
     const [result, setResult] = useState({});
 
+    const [submitBtnDisabled, setSubmitBtnDisabled] = useState(false); // During fetch request -> disable submit button
+
     useEffect(() => {
         if (!user) {
             navigate("../login", {replace: true});
@@ -46,6 +48,7 @@ export default function DeletePost(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSubmitBtnDisabled(true);
         const bearer = "Bearer " + localStorage.getItem("token");
         fetch(`${process.env.REACT_APP_API_URL}/auth/posts/${postid}`,
             {
@@ -62,10 +65,12 @@ export default function DeletePost(props) {
                 if (result.status === 200) {
                     navigate("/", {replace: true});
                 }
+                setSubmitBtnDisabled(false);
             },
             (error) => {
                 setIsLoaded2(true);
                 setError2(error);
+                setSubmitBtnDisabled(false);
             })
     }
 
@@ -106,21 +111,17 @@ export default function DeletePost(props) {
                     <PostCardDel post={post} count={count}/>
                     <form className="delete-form" onSubmit={handleSubmit}>
                         <label className="delete-label" htmlFor="confirmation">To delete the post, type the title to confirm</label>
+                        {(result.status >= 400 && result.status <= 451)  &&
+                        <div className="error-box">
+                            <p>{result.message}</p>
+                        </div>}
                         <div className="delete-form-div">
                             <input className="delete-input" name="confirmation" id="confirmation" type="text"/>
-                            <button className="delete-button">Delete</button>
+                            <button className="delete-button" disabled={submitBtnDisabled} style={submitBtnDisabled?{cursor: "wait"}:{}}>Delete</button>
                         </div>
                     </form>
                 </div>
             </main>
         )
     }
-
-
-
-
-    
-
-
-
 }

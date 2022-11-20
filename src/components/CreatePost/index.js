@@ -13,10 +13,10 @@ export default function CreatePost(props) {
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [result, setResult] = useState({});
     const [file, setFile] = useState(null);
 
-
+    const [resultErrors, setResultErrors] = useState({});
+    const [submitBtnDisabled, setSubmitBtnDisabled] = useState(false); // During fetch request -> disable submit button
 
     useEffect(() => {
         if (!user) {
@@ -30,7 +30,13 @@ export default function CreatePost(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSubmitBtnDisabled(true);
         if (editorRef.current) {
+            if (file?.size >= 2097152) {
+                setResultErrors({errors:[{msg: "File too large, max size is 2MB"}]});
+                setSubmitBtnDisabled(false);
+                return;
+            }
             const bearer = "Bearer " + localStorage.getItem("token");
             const formData = new FormData();
             formData.append("title", editorRef.current.dom.select('h1')[0]?.innerText??"");
@@ -49,15 +55,19 @@ export default function CreatePost(props) {
                 .then((res) => res.json())
                 .then((result) => {
                     setIsLoaded(true);
-                    setResult(result);
+                    setResultErrors(result);
                     if (result.status === 201) {
                         navigate("/", {replace: true});
                     }
+                    setSubmitBtnDisabled(false);
                 },
                 (error) => {
                     setIsLoaded(true);
                     setError(error);
+                    setSubmitBtnDisabled(false);
                 })
+        } else {
+            setSubmitBtnDisabled(false);
         }
     }
 
@@ -77,8 +87,12 @@ export default function CreatePost(props) {
                               }}
                             />
                         <div className="editor-error-box">
-                            {result.errors &&
-                            result.errors.map((error) => {
+                            {(resultErrors.status >= 400 && resultErrors.status <= 451) &&
+                            <div className="error-box">
+                                <p className="error-message">{resultErrors.message}</p>
+                            </div>}
+                            {resultErrors.errors &&
+                            resultErrors.errors.map((error) => {
                                 return(
                                     <div className="error-box" key={nanoid()}>
                                         <p className="error-message">{error.msg}</p>
@@ -97,7 +111,7 @@ export default function CreatePost(props) {
                             </div>
                             <p className="editor-author"><strong>{"Author: " + user?.full_name}</strong></p>
                             <div className="editor-submit-box">
-                                <button className="editor-btn-submit">Submit Post</button>
+                                <button className="editor-btn-submit" disabled={submitBtnDisabled} style={submitBtnDisabled?{cursor: "wait"}:{}}>Submit Post</button>
                             </div>
                         </div>
                     </form>                    

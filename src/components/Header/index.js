@@ -28,13 +28,18 @@ export default function Header(props) {
             <div className="header-box">
                 <div className="header-top-box">
                     <div className="logo-box">
-                        <a href="/"><h1>{"<Edit/>"}</h1></a>
+                        <a href="/"><h1>{"<Blog/>"}</h1></a>
                     </div>
                     <button onClick={handleClickMenu} id="menuBtn"><img id="menu" src={MenuIcon}/></button>
                 </div>
                 {user?
                 <div className={menuVis + " mobile-auth-box"}>
-                    <a href="/profile"><button className="mobile-profile-button">Profile</button></a>
+                    <a href="/profile">
+                        <button className="mobile-profile-button">
+                            <span>Profile</span>
+                            <img className="mobile-profile-avatar-icon" src={user.avatar_url}/>
+                        </button>
+                    </a>
                     <a onClick={handleClick}><button className="mobile-logout-button">Log Out</button></a>
                 </div>:
                 <div className={menuVis + " mobile-auth-box"}>
@@ -43,7 +48,12 @@ export default function Header(props) {
                 </div>}
                 {user?
                 <div className="auth-box">
-                    <a href="/profile"><button className="profile-button">Profile</button></a>
+                    <a href="/profile">
+                        <button className="profile-button">
+                            <img className="profile-avatar-icon" src={user.avatar_url}/>
+                            <span>Profile</span>
+                        </button>
+                    </a>
                     <a onClick={handleClick}><button className="logout-button">Log Out</button></a>
                 </div>:
                 <div className="auth-box">

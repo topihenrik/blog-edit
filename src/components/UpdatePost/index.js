@@ -21,8 +21,9 @@ export default function UpdatePost(props) {
     const [result, setResult] = useState({});
     const [resultErrors, setResultErrors] = useState({});
     const [file, setFile] = useState(null);
-    
 
+    const [submitBtnDisabled, setSubmitBtnDisabled] = useState(false); // During fetch request -> disable submit button
+    
     useEffect(() => {
         if (!user) {
             navigate("../login", {replace: true});
@@ -52,12 +53,15 @@ export default function UpdatePost(props) {
         setFile(e.target.files[0]);
     }
 
-
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSubmitBtnDisabled(true);
         if (editorRef.current) {
+            if (file?.size >= 2097152) {
+                setResultErrors({errors:[{msg: "File too large, max size is 2MB"}]});
+                setSubmitBtnDisabled(false);
+                return;
+            }
             const bearer = "Bearer " + localStorage.getItem("token");
             const formData = new FormData();
             formData.append("postID", postid);
@@ -77,15 +81,19 @@ export default function UpdatePost(props) {
                 .then((res) => res.json())
                 .then((result) => {
                     setIsLoaded2(true);
-                    setResult(result);
+                    setResultErrors(result);
                     if (result.status === 201) {
                         navigate("/", {replace: true});
                     }
+                    setSubmitBtnDisabled(false);
                 },
                 (error) => {
                     setIsLoaded2(true);
                     setError2(error);
+                    setSubmitBtnDisabled(false);
                 })
+        } else {
+            setSubmitBtnDisabled(false);
         }
     }
 
@@ -139,8 +147,12 @@ export default function UpdatePost(props) {
                                   }}
                                 />
                             <div className="editor-error-box">
-                                {result.errors &&
-                                result.errors.map((error) => {
+                                {(resultErrors.status >= 400 && resultErrors.status <= 451) &&
+                                <div className="error-box">
+                                    <p className="error-message">{resultErrors.message}</p>
+                                </div>}
+                                {resultErrors.errors &&
+                                resultErrors.errors.map((error) => {
                                     return(
                                         <div className="error-box" key={nanoid()}>
                                             <p className="error-message">{error.msg}</p>
@@ -150,7 +162,7 @@ export default function UpdatePost(props) {
                             </div>
                             <div className="editor-bottom-area">
                                     <div className="editor-photo-box">
-                                        <label className="editor-photo-label" htmlFor="photo"><img id="upload-icon" src={uploadIcon}/><span className="editor-photo-span">{file?file.name:post.photo.originalName?post.photo.originalName:"Cover image"}</span></label>
+                                        <label className="editor-photo-label" htmlFor="photo"><img id="upload-icon" src={uploadIcon}/><span className="editor-photo-span">{file?file.name:post.photo.originalName?post.photo.originalName:"Cover image"}</span><span className="editor-photo-span max-size">{"(max: 2MB)"}</span></label>
                                         <input id="photo" name="photo" type="file" accept="image/png, image/jpeg" onChange={handleChange}/>
                                     </div>
                                     <div className="published-box">
@@ -165,7 +177,7 @@ export default function UpdatePost(props) {
                                     </div>
                                     <p className="editor-author">{"Author: " + post?.author?.first_name + " " + post?.author?.last_name}</p>
                                     <div className="editor-submit-box">
-                                        <button className="editor-btn-submit">Update Post</button>
+                                        <button className="editor-btn-submit" disabled={submitBtnDisabled} style={submitBtnDisabled?{cursor: "wait"}:{}}>Update Post</button>
                                     </div>
                             </div>
                         </form>                    

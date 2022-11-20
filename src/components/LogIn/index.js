@@ -6,10 +6,12 @@ export default function LogIn(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [result, setResult] = useState({});
+    const [submitBtnDisabled, setSubmitBtnDisabled] = useState(false); // During fetch request -> disable submit button
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSubmitBtnDisabled(true);
         fetch(`${process.env.REACT_APP_API_URL}/login`, 
             {
                 method: "POST",
@@ -20,21 +22,23 @@ export default function LogIn(props) {
             .then((result) => {
                 setIsLoaded(true);
                 setResult(result);
-                if (result.status == 201) {
+                if (result.status === 201) {
                     localStorage.setItem("token", result.token);
                     localStorage.setItem("user", JSON.stringify(result.user));
                     setUser({...result.user});
                     navigate("/", {replace: true});
                 }
+                setSubmitBtnDisabled(false);
             },
             (error) => {
                 setIsLoaded(true);
                 setError(error);
+                setSubmitBtnDisabled(false);
             })
     }
 
     return(
-        <div className="login-main">
+        <main className="login-main">
             <div className="login-box">
                 <div className="login-title-box">
                     <h2>Log In</h2>
@@ -46,9 +50,9 @@ export default function LogIn(props) {
                     <div className="error-box">
                         <p>{result.message}</p>
                     </div>}
-                    <button>Log In</button>
+                    <button disabled={submitBtnDisabled} style={submitBtnDisabled?{cursor: "wait"}:{}}>Log In</button>
                 </form>
             </div>
-        </div>
+        </main>
     )
 }
