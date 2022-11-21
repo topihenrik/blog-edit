@@ -24,6 +24,12 @@
   font-weight: 700;
 }
 
+@font-face {
+  font-family: "Montserrat-Alternates";
+  src: url("./fonts/MontserratAlternates-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
 .tox-promotion {
   display: none;
 }
@@ -171,8 +177,12 @@ header > div {
 }
 
 .logo-box a h1 {
+  font-family: "Montserrat-Alternates";
   padding-bottom: 6px;
-  font-weight: 700;
+}
+
+#logo-first-letter {
+  font-family: "Montserrat";
 }
 
 .logo-box a:hover {
@@ -807,11 +817,19 @@ header > div {
   gap: 8px;
 }
 
+.hero-box > h1 {
+  font-family: "Montserrat-Alternates";
+}
+
+.hero-box > h1::first-letter {
+  font-family: "Montserrat";
+}
+
 .hero-box > p {
   line-height: 20px;
   word-break: break-word;
+  font-weight: 600;
 }
-
 
 .posts-box {
   display: flex;

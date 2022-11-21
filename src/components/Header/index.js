@@ -28,7 +28,7 @@ export default function Header(props) {
             <div className="header-box">
                 <div className="header-top-box">
                     <div className="logo-box">
-                        <a href="/"><h1>{"<Blog/>"}</h1></a>
+                        <a href="/"><h1>{"<"}<span id="logo-first-letter">E</span>dit{"/>"}</h1></a>
                     </div>
                     <button onClick={handleClickMenu} id="menuBtn"><img id="menu" src={MenuIcon}/></button>
                 </div>
