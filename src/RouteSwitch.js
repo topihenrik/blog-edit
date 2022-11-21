@@ -13,8 +13,6 @@ import UpdatePost from "./components/UpdatePost";
 import Footer from "./components/Footer";
 import DeletePost from "./components/DeletePost";
 
-
-
 export default function RouteSwitch() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
     return(
@@ -23,7 +21,7 @@ export default function RouteSwitch() {
             <Routes>
                 <Route path="/" element={<Home user={user}/>}/>
                 <Route path="/login" element={<LogIn user={user} setUser={setUser}/>}/>
-                <Route path="/signup" element={<SignUp/>}/> 
+                <Route path="/signup" element={<SignUp user={user}/>}/> 
                 <Route path="/signup/success" element={<SignUpSuccess/>}/>
                 <Route path="/profile" element={<Profile user={user}/>}/>
                 <Route path="/profile/edit" element={<ProfileEdit user={user} setUser={setUser}/>}/>
